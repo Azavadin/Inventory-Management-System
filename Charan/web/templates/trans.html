@@ -1,0 +1,87 @@
+{{define "title"}}Item transaction history{{end}}
+
+{{define "body"}}
+<h1 style="margin-bottom:40px; font-family:simplifica;font-size:40px">Transaction history</h1>
+<style>
+#l1 {
+  font-size: 20px;
+  font-family:simplifica;
+}
+</style>
+{{ if .Response }}
+{{ if .Success }}
+<div class="alert alert-success" role="alert">
+    Successful request
+</div>
+{{ else }}
+<div class="alert alert-danger" role="alert">
+    {{.Message}}
+</div>
+{{ end }}
+{{ end }}
+
+<form action="trans.html" method="post">
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" id="l1"> Enter Name </label>
+        <div class="col-9">
+        <input type="text" name="name" required> <span style="color:red">*</span>
+      </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" id="l1"> Catlog No </label>
+        <div class="col-9">
+        <input type="text" name="cat_num" required><span style="color:red">*</span>
+      </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" id="l1"> Days </label>
+        <div class="col-9">
+        <input type="text" name="days">
+      </div>
+  </div>
+
+<div class="form-group row">
+	<input type="hidden" name="submitted" value="true">
+    <button type="submit" class="btn btn-lg btn-success">Search
+    </button>
+</div>
+</form>
+
+
+
+	<pre>
+	<ul>
+    {{if .Response}}
+	<label> Purchases: {{.Name}} {{.Cat}}</label>
+		Total amount: {{.Totalunit}}
+		Total spending: {{.Totalcost}}
+    {{end}}
+	{{range .List_buy}}
+		Amount: {{.Amount}}
+		Date of purchase: {{.Purchase_date}}
+		Purchase price: {{.Price}}
+		Purchase by: {{.Purchase_by}}
+		Comment:{{.Comment}}
+	{{end}}
+	</ul>
+	</pre>
+	<pre>
+	<ul>
+    {{if .Response}}
+	<label> Requests: {{.Name}} {{.Cat}}</label>
+		Total amount: {{.Totalunit}}
+    {{end}}
+	{{range .List_used}}
+		Amount: {{.Amount}}
+		Date of request: {{.Purchase_date}}
+		Request by: {{.Request_by}}
+		Supplier: {{.Supplier}}
+		Comment:{{.Comment}}
+	{{end}}
+	</ul>
+	</pre>
+
+{{end}}

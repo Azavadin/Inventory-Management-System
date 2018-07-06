@@ -1,0 +1,60 @@
+{{define "title"}}Request{{end}}
+
+{{define "body"}}
+<h1 style="margin-bottom:40px; font-family:simplifica; font-size:40px">Request Item</h1>
+<style>
+#l1 {
+  font-size: 20px;
+  font-family:simplifica;
+}
+</style>
+{{ if .Response }}
+{{ if .Success }}
+<div class="alert alert-success" role="alert">
+    {{ .Message}}
+</div>
+{{ else }}
+<div class="alert alert-danger" role="alert">
+    Unable to submit the request, retry later.
+</div>
+{{ end }}
+{{ end }}
+
+<form action="requestItem.html" method="post">
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" id="l1"> Enter Name </label>
+        <div class="col-9">
+        <input type="text" name="name" required> <span style="color:red">*</span>
+      </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" id="l1"> Catlog No </label>
+        <div class="col-9">
+        <input type="text" name="cat_num" required><span style="color:red">*</span>
+      </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" id="l1"> Amount </label>
+        <div class="col-9">
+        <input type="text" name="amount" required><span style="color:red">*</span>
+      </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label" id="l1"> Requested by </label>
+        <div class="col-9">
+        <input type="text" name="request" required><span style="color:red">*</span>
+      </div>
+  </div>
+
+  <div class="form-group row">
+    <input type="hidden" name="submitted" value="true">
+    <button type="submit" class="btn btn-lg btn-success">Send the request</button>
+  </div>
+
+</form>
+
+{{end}}

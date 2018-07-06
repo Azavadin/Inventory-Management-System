@@ -1,0 +1,62 @@
+{{define "title"}}Find Item{{end}}
+
+
+{{define "body"}}
+<div class="container">
+
+	<h1 style="margin-bottom:40px; font-family:simplifica; font-size:40px">Find Item</h1>
+	<style>
+	#l1 {
+	  font-size: 20px;
+	  font-family:simplifica;
+	}
+	</style>
+	<form action="findItem.html" method="post">
+
+		<div class="form-group row">
+	  	<label class="col-sm-3 col-form-label" id="l1"> Enter Name </label>
+			<div class="col-9">
+				<input type="text" name="name" required> <span style="color:red">*</span>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label" id="l1"> Enter Catlog Number </label>
+			<div class="col-9">
+				<input type="text" name="cat_num">
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<input type="hidden" name="submitted" value="true">
+	    <button type="submit" class="btn btn-lg btn-success">Send the request</button>
+	  </div>
+
+	</form>
+</div>
+
+
+
+	{{if .Partial_key}}
+		<pre>
+		<ul>
+		{{range .List_data}}
+		Name: {{.Name}}
+		Catlog number: {{.Catalog_num}}
+		Amount: {{.Amount}}
+		{{end}}
+		</ul>
+	</pre>
+
+	{{else}}
+		{{if .Response}}
+		<pre>
+	Name: {{.Name}}
+	Catalog number: {{.Cat}}
+	Amount: {{.Amount}}
+	</pre>
+	{{end}}
+{{end}}
+
+
+{{end}}

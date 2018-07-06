@@ -1,0 +1,51 @@
+{{define "title"}}Home{{end}}
+
+{{define "body"}}
+<div class="container">
+
+</div>
+<h1>Home</h1>
+<div class="container">
+<form action="/" method="POST" novalidate>
+	<div class=row>
+	  <div class="col-md-8">
+		<span>
+			<label> Enter Name </label>
+		    <input type="text" name="name"> 
+		</span>
+	 </div>
+	</div>
+	<div class="row">
+	<div class="col-md-8">
+		<span>
+			<label> Enter Catlog Number: </label>
+			<input type="text" name="cat_num">
+		</span>
+	</div>
+</div>
+	<div>
+		<label> Enter Amount: </label>
+		<input type="text" name="amount">
+	</div>
+	<div>
+		<label> Enter Comments: </label>
+		<input type="textarea" name="comments">
+	</div>
+	<div>
+		<label> Enter Purchase date: </label>
+		<input type="text" name="amount">
+	</div>
+	<div>
+		<label> Enter Supplier: </label>
+		<input type="text" name="supplier">
+	</div>
+	<div>
+		<label> Enter Purchase By: </label>
+		<input type="text" name="purchaseBy">
+	</div>
+	<button type="submit" class="btn-success">Submit</button>
+</form>
+</div>
+
+
+{{end}}

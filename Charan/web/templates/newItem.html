@@ -1,0 +1,84 @@
+{{define "title"}}Add an item to the ledger{{end}}
+<link rel="stylesheet" href="{{ .Static }}css/bootstrap.min.css" type="text/css">
+{{define "body"}}
+<h1 style="margin-bottom:40px; font-family:simplifica; font-size:40px">Add an item to the system</h1>
+<style>
+#l1 {
+  font-size: 20px;
+  font-family:simplifica;
+}
+</style>
+
+{{ if .Response }}
+{{ if .Success }}
+<div class="alert alert-success" role="alert">
+    {{ .Message}}
+</div>
+{{ else }}
+<div class="alert alert-danger" role="alert">
+    Unable to submit the request, retry later.
+</div>
+{{ end }}
+{{ end }}
+<div class="container">
+<form action="newItem.html" method="post">
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label" id="l1"> Enter Name </label>
+          <div class="col-9">
+          <input type="text" name="name" required> <span style="color:red">*</span>
+        </div>
+    </div>
+
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label" id="l1"> Enter Catlog Number </label>
+        <div class="col-9">
+            <input type="text" name="cat_num" required> <span style="color:red">*</span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label" id="l1"> Enter Amount </label>
+            <div class="col-9">
+            <input type="text" name="amount" required> <span style="color:red">*</span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label" id="l1"> Enter unit price </label>
+          <div class="col-9">
+          <input type="textarea" name="price" required> <span style="color:red">*</span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label" id="l1"> Enter staff name </label>
+        <div class="col-9">
+          <input type="textarea" name="staff" required> <span style="color:red">*</span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label" id="l1"> Enter supplier name </label>
+        <div class="col-9">
+          <input type="textarea" name="supplier" required> <span style="color:red">*</span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label" id="l1"> Enter comments </label>
+        <div class="col-9">
+          <input type="textarea" name="comment">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <input type="hidden" name="submitted" value="true">
+        <div class="col-10">
+          <button type="submit" class="btn btn-lg btn-success">Send the request</button>
+        </div>
+      </div>
+
+	</form>
+</div>
+
+{{end}}

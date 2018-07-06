@@ -1,0 +1,83 @@
+{{define "title"}}Request{{end}}
+
+{{define "body"}}
+<h1 style="margin-bottom:40px; font-family:simplifica; font-size:40px">Request</h1>
+
+{{ if .Response }}
+{{ if .Success }}
+<div class="alert alert-success" role="alert">
+    Successful request, transaction ID: {{ .TransactionId }}
+</div>
+{{ else }}
+<div class="alert alert-danger" role="alert">
+    Unable to submit the request, retry later.
+</div>
+{{ end }}
+{{ end }}
+
+<form action="request.html" method="post">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="helloValue">Hello value</label>
+      <div class="col-10">
+        <input type="text" id="helloValue" placeholder="world" name="hello">
+      </div>
+    </div>
+
+    <div class="form-group row">
+			<label class="col-sm-2 col-form-label"> Enter Name: </label>
+			<div class="col-10">
+				<input type="text" name="name">
+			</div>
+		</div>
+
+    <div class="form-group row">
+			<label class="col-sm-2 col-form-label"> Enter Catlog Number: </label>
+			<div class="col-10">
+				<input type="text" name="cat_num">
+			</div>
+		</div>
+
+    <div class="form-group row">
+			<label class="col-sm-2 col-form-label"> Enter Amount: </label>
+			<div class="col-10">
+				<input type="text" name="amount">
+			</div>
+		</div>
+
+    <div class="form-group row">
+			<label class="col-sm-2 col-form-label"> Enter Comments: </label>
+			<div class="col-10">
+				<input type="textarea" name="comments">
+			</div>
+		</div>
+
+    <div class="form-group row">
+			<label class="col-sm-2 col-form-label"> Enter Purchase Date: </label>
+			<div class="col-10">
+				<input type="text" name="purchaseDate">
+			</div>
+		</div>
+
+    <div class="form-group row">
+			<label class="col-sm-2 col-form-label"> Enter Supplier: </label>
+			<div class="col-10">
+				<input type="text" name="supplier">
+			</div>
+		</div>
+
+    <div class="form-group row">
+			<label class="col-sm-2 col-form-label"> Enter Purchase by: </label>
+			<div class="col-10">
+				<input type="text" name="purchaseBy">
+			</div>
+		</div>
+
+    <div class="form-group row">
+      <input type="hidden" name="submitted" value="true">
+      <button type="submit" class="btn btn-success">Send the request</button>
+   </div>
+
+	</form>
+
+
+{{end}}
